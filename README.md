@@ -1,20 +1,19 @@
 # Realtime Object Detection with OpenCV + YOLOv8
 
-## 1) Overview / 개요
+## 1) Overview
 
 This project implements **realtime object detection** using **OpenCV** for video I/O & visualization and **YOLOv8** for detection.
-OpenCV는 영상 입출력·시각화를, YOLOv8은 객체 감지를 담당
 
-**Today’s scope / 오늘 구현 범위**
+**Today’s scope (2025.08.11)**
 
-- Python venv setup / 가상환경 세팅
-- Webcam smoke test / 카메라 스모크 테스트
-- YOLOv8 realtime detection (CPU) / 실시간 감지
-- Advanced: class filtering + MP4 saving / 클래스 필터링 + 동영상 저장
+- Python venv setup
+- Webcam smoke test
+- YOLOv8 realtime detection (CPU)
+- Advanced: class filtering + MP4 saving
 
 ---
 
-## 2) Environment Setup / 환경 설정
+## 2) Environment Setup
 
 ```bash
 # Create & activate venv
@@ -29,17 +28,17 @@ pip install opencv-python ultralytics numpy
 pip freeze > requirements.txt
 ```
 
-## 3) Project Structure / 폴더 구조
+## 3) Project Structure
 
 ```bash
 opencv-project/
 ├─ venv/
 ├─ src/
-│ ├─ cam_smoke_test.py # webcam preview / 카메라 미리보기
-│ ├─ detect_cam.py # YOLOv8 realtime detection / 실시간 감지
-│ └─ detect_cam_advanced.py # class filter + save / 필터+저장
-├─ output/ # saved videos / 저장 영상
-├─ data/ # test videos (optional) / 테스트 영상
+│ ├─ cam_smoke_test.py # webcam preview
+│ ├─ detect_cam.py # YOLOv8 realtime detection
+│ └─ detect_cam_advanced.py # class filter + save
+├─ output/ # saved videos
+├─ data/ # test videos
 └─ README.md
 ```
 
@@ -51,7 +50,7 @@ A) Webcam smoke test
 python src/cam_smoke_test.py
 ```
 
-B) Realtime detection / 실시간 감지
+B) Realtime detection
 
 - Shows bounding boxes & labels, prints smoothed FPS.
 
@@ -62,7 +61,7 @@ python src/detect_cam.py
 C) Advanced: class filter + save
 
 ```bash
-WANTED_CLASSES = None  # None → show all / 전체 표시
+WANTED_CLASSES = None  # None → show all
 # e.g. {"person", "car", "cell phone", "chair"}
 CONF_THRESH = 0.25     # lower → more detections
 RESIZE_TO = (960, 540) # None or (W,H)
@@ -82,9 +81,7 @@ YOLOv8: model.predict(frame) → boxes, classes, confidences
 
 Visualization: bounding boxes & labels → FPS overlay
 
-(Advanced) 원하는 클래스만 남기고 VideoWriter로 MP4 저장
-
-## 6) Troubleshooting / 문제 해결
+## 6) Troubleshooting
 
 - macOS camera permission:
   System Settings → Privacy & Security → Camera에서 사용 앱(Visual Studio Code/Terminal) 토글 ON.
